@@ -1,13 +1,11 @@
-FROM python:3.7.5-buster
+FROM python:3.7.6-buster
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
         supervisor \
         virtualenv
 
-# Until pyFF pull request 183 https://github.com/IdentityPython/pyFF/pull/183
-# is merged and a new release cut use a special URL the causes pip to include
-# the PR as if it were merged.
-ENV PYFF_SRC_URL=git+https://github.com/IdentityPython/pyFF.git@refs/pull/183/merge
+# Use the head of master on February 3, 2020.
+ENV PYFF_SRC_URL=git+https://github.com/IdentityPython/pyFF.git@a17e5435392f1bef5a3d5854fbd2ebbdbfa2dfbe
 
 RUN mkdir -p /opt/pyff \
     && adduser --home /opt/pyff --no-create-home --system pyff --group \
