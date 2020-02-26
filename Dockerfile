@@ -4,8 +4,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         supervisor \
         virtualenv
 
-# Use the head of master on February 3, 2020.
-ENV PYFF_SRC_URL=git+https://github.com/IdentityPython/pyFF.git@a17e5435392f1bef5a3d5854fbd2ebbdbfa2dfbe
+# Until PR 192 is merged use a special source URL.
+ENV PYFF_SRC_URL=git+https://github.com/IdentityPython/pyFF.git@refs/pull/192/merge
 
 RUN mkdir -p /opt/pyff \
     && adduser --home /opt/pyff --no-create-home --system pyff --group \
